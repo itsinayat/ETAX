@@ -1,4 +1,4 @@
-package com.rest.baseframework.dao.hibernate;
+package com.rest.baseframework.dao.hibernate; 
 
 import java.util.List;
 
