@@ -32,16 +32,6 @@ public class SampleController {
      	 dao.closeNewSession();
      	 dao.getCurrentSession();
 		 
-		      
-		/*      
-		Session session= factory.openSession();
-	                    	session.beginTransaction();
-	                    	session.save(e);
-	                    	session.getTransaction().commit();
-	                    	session.close();
-	                    	factory.close();*/
-		      
-		      
 		
 		return Response.status(200).entity(e).build();
 		

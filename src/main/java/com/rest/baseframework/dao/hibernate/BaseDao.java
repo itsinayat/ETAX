@@ -11,10 +11,13 @@ import javax.persistence.criteria.Root;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.FlushMode; 
+import org.hibernate.FlushMode;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import com.rest.baseframework.entity.Users;
 
 public class BaseDao implements IBaseDao {
 	private SessionFactory sessionFactory;
@@ -48,11 +51,18 @@ public class BaseDao implements IBaseDao {
 		return session;
 	}
 	
+	public Users getSingleUser(long id) {
+	Query q = getCurrentSession().createQuery("select u from User u inner join u.company c where c.id = :id");
+	q.setParameter("id", id);
+	List<Users> list = q.list();
+	return list.get(0);
+}
+	
 	public void closeNewSession() {
 		    this.session.getTransaction().commit();
 	     	this.session.close();
 	     	this.sessionFactory.close();
-			 
+			
 	}
 
 
